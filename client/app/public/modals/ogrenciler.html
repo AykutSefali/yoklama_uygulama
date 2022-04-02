@@ -1,0 +1,64 @@
+
+  
+  <template name="addogrenci">
+    {{#let _siniflar=(state.get 'siniflar') _ogrenciler=(state.get 'ogrenciler') _sinif=(state.get 'sinif') _yoklamalar=(state.get 'yoklamalar') _check=(state.get 'check')}}
+      <div class="modal-content" >
+        <h1>Lütfen Sınıf Seçiniz</h1>
+        <form id="brdOgrenciCreateForm" class="add-form border-primary rounded">
+          {{#if _sinif}}
+          <input type="text" name="oname" placeholder="öğrenci ismi">
+         
+          <button  type="submit" >Ekle </button>
+        
+          {{/if}}
+          
+          <select  name="dersler" class="brd-select">
+            <option></option>
+          
+            {{#each _siniflar}}
+            <option value="{{_id}}"  class="brd-select-option">
+              {{name}}
+            </option>
+            
+            {{/each}}
+          
+          </select>
+        
+        </form>
+      </div>
+     
+     <form id="brdYoklamaFormu" class="brd-yoklama-kayıt">
+      <div class="list">
+        {{#if _sinif}}
+        <input  name="yoklamatarihi" type="date" class="brd-date" >
+        
+        <h1>Ogrenciler</h1>
+        
+        {{#each _ogrenciler}}
+        <li class="list-group-item brd-class-ogrenciler">
+        
+         <input   value="{{_id}}"  type="checkbox" style='width: 100px;'  >   
+         
+
+            {{name}}
+            
+        </li>
+       {{/each}}
+       
+        <button class="btn btn-primary">Kaydet</button>
+        {{/if}}
+      </div>
+    </form>
+    <li class="list-group-item">
+        
+      
+      {{_yoklamalar.ogrenciId}}
+      
+         
+     </li>
+    
+    
+      {{/let}}
+  
+  </template>
+  

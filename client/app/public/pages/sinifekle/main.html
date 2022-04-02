@@ -1,0 +1,67 @@
+
+<template name="add">
+ 
+  {{#let _siniflar=(state.get 'siniflar') _sinif=(state.get 'sinif')}}
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="fw-bold">Siniflar</h4>
+
+        <form id="brdSınıfcreateForm" class="d-flex gap-2 flex-fill mb-2">
+          <input class="form-control" name="sname" type="text" placeholder="Sınıf adı">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+        <ul class="list-group">
+          {{#each _siniflar}}
+            <li class="list-group-item {{#if eq _id _sinif._id}}active{{/if}} "> 
+              <div class="d-md-flex justify-content-md-end">
+                <button class="btn btn-danger brd-delete "><i class="far fa-chart-line fa-fw me-2"></i>Sil</button>
+                
+              </div>
+              
+              <a data-id="{{_id}}" href="#" class="brd-sinif-select text-dark">{{name}}</a> 
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+       
+
+         <div class="col-md-6">
+           <h4 class="fw-bold">Öğrenciler</h4>
+           {{#if _sinif}}
+         
+          <div class="card h-100">
+            <div class="card-header">
+            <h6>{{_sinif.name}} </h6>
+          
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              {{#each ogrenciler}}
+                <li class="list-group-item mb-2"> 
+                  <div class="d-md-flex justify-content-md-end">
+                    <button class="btn btn-danger brd-delete-ogrenci"><i class="far fa-chart-line fa-fw me-2"></i>Sil</button>
+                   
+                  </div>
+                  {{name}} 
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="card-footer">
+            <form id="brdOgrenciCreateForm" class="d-flex gap-2 flex-fill mb-2">
+              <input class="form-control" name="oname" type="text" placeholder="öğrenci adı">
+              <button type="submit" classs="btn btn-primary">Kayıt</button>
+            </form>
+          </div>
+         </div>
+         {{else}}
+         <p class="text-center py-4"> Seçili öğrenci yok</p>
+         {{/if}}
+        </div>
+      </div>
+  {{/let}}
+
+</template>

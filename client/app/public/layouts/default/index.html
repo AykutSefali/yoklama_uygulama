@@ -1,0 +1,28 @@
+<template name="publicLayoutDefault">
+  <div class="row">
+    <div class="col-md-2">
+  <div class="publicLayoutDefault layout">
+    <nav id="sidebar" class="bg-success">
+     
+
+      <ul class="list-group px-3">
+        <a data-cy="brd-test-dashboard" href="/ogrenci-ekle" class="list-group-item border-0 my-1 rounded-3 fw-bold {{#if isActive 'ogrenci-ekle'}}text-white bg-primary{{else}}text-black-50{{/if}}"><i class="far fa-chart-line fa-fw me-2"></i> Öğrenci Ekle</a>
+        <!-- Page Content  <a data-cy="brd-test-log-out" href="#" class="list-group-item border-0 my-1 rounded-3 fw-bold text-black-50 brd-log-out"><i class="far fa-sign-out fa-fw me-2"></i> Çıkış</a> -->
+        <a data-cy="brd-test-dashboard" href="/" class="list-group-item border-0 my-1 rounded-3 fw-bold {{#if isActive '/'}}text-white bg-primary{{else}}text-black-50{{/if}}"><i class="far fa-chart-line fa-fw me-2"></i> Sınıf Ekle</a>
+
+      </ul>
+
+    </nav>
+  </div>
+</div>
+  <div class="col-md-8">
+    <!-- Page Content  -->
+    <div id="content">
+      <div class="pageReactive">
+        {{> Template.dynamic template=page}}
+      </div>
+    </div>
+  </div>
+
+</div>
+</template>
